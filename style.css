@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif; /*import font-family nunito*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('coding.jpg'); /* Ensure the image is in the same directory */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Prevents overflow issues */
+    filter: hue-rotate(0deg); /* Initial hue-rotation filter */
+    animation: animateColor 5s linear infinite; /* Apply animation */
+}
+
+@keyframes animateColor {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.box {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Ensures the text and box are above the background */
+}
+
+.box h2 {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: white; /* Base color, will be modified by the filter */
+    filter: hue-rotate(0deg); /* Sync with the section hue-rotation */
+    text-shadow: 
+        0 0 10px #00b3ff,
+        0 0 20px #00b3ff,
+        0 0 40px #00b3ff,
+        0 0 80px #181b1d,
+        0 0 120px #00b3ff,
+        0 0 156px #00b3ff;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #00b3ff; /* Cursor effect */
+    animation: typing 6s steps(40, end) infinite, blink-caret 0.75s step-end infinite; /* Made infinite */
+}
+
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%; /* Typing the full text */
+    }
+    60% {
+        width: 100%; /* Hold the full text for a brief moment */
+    }
+    100% {
+        width: 0; /* Erasing the text */
+    }
+}
+
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #00b3ff; /* Cursor color */
+    }
+}
+
+.lightBar {
+    position: absolute;
+    top: 0;
+    left: -10px; /* Initially positions the light bar just outside the left side of the section */
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.8); /* Glow effect */
+    animation: moveLightBar 3s linear infinite;
+    z-index: 3; /* Ensures the lightBar is above everything */
+}
+
+@keyframes moveLightBar {
+    0% {
+        left: -10px; /* Starts just outside the left side */
+    }
+    25% {
+        left: calc(100% - 10px); /* Moves to the right side */
+    }
+    50% {
+        left: calc(100% - 10px); /* Keeps on the right side */
+    }
+    75% {
+        left: -10px; /* Moves back to the left side */
+    }
+    100% {
+        left: -10px; /* Loops back to the left side */
+    }
+}
